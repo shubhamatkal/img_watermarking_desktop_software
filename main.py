@@ -18,6 +18,7 @@ root.geometry("810x700")
 
 #image file path
 img_file = ""
+watermark_file = ""
 
 #writing some functions
 def select_file():
@@ -37,7 +38,11 @@ def toggle():
         a_label.config(text="PHOTO WATERMARK")
         photo_toggle = True
 
-
+def select_watermark():
+    global watermark_file
+    watermark_file = askopenfilename()
+    print(f"✓ User has selected the water mark image: {watermark_file}")
+    print("...")
 
 #title
 title_label = Label( text = "IMAGE WATERMARKER", font=(FONT_NAME, 48, "bold"),
@@ -75,6 +80,10 @@ b_label.grid(column=0 , row=4)
 t_label = Label(text="type the text in below cell")
 t_label.grid(column=1 , row=4)
 
+
+#todo creating button to select the image for watermark
+select_watermark_button = Button(root, text="watermark image", font=20, width=15, command=select_watermark)
+select_watermark_button.grid(column=0, row=5,padx=25, pady=25)
 
 
 
