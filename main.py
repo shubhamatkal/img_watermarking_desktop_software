@@ -8,7 +8,7 @@ GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 TITLE_COLOUR = "#5D12D2"
 BACKGROUND_COLOR = "#FFE5E5"
-
+photo_toggle = True
 
 #setting up tkinter window
 root = Tk()
@@ -26,6 +26,15 @@ def select_file():
     print(f"✓ User has selected the file: {img_file}")
     print("...")
 
+def toggle():
+    global photo_toggle
+    if photo_toggle:
+        photo_button.config(image=text)
+        photo_toggle = False
+    else:
+        photo_button.config(image=photo)
+        photo_toggle = True
+
 
 
 #title
@@ -37,6 +46,14 @@ title_label.grid(column=0, row=0 , rowspan=1, columnspan=3)
 select_img_button = Button(root, text="upload image", font=20, width=15, command=select_file)
 select_img_button.grid(column=0, row=1,columnspan=2,padx=25, pady=25)
 
+
+#defining toggle images
+photo = PhotoImage(file="/resources/PHOTO WATERMARK.png")
+text = PhotoImage(file="/python/good python projects/my_own_projects/img_watermarking_desktop_software/resources/TEXT WATERMARK.png")
+
+#create toggle button
+photo_button = Button(root,image=photo, bd=0, command=toggle)
+photo_button.grid(column=0 , row=2, columnspan=2, pady=25, padx=25)
 
 
 
