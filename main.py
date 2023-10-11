@@ -30,9 +30,11 @@ def toggle():
     global photo_toggle
     if photo_toggle:
         photo_button.config(image=text)
+        a_label.config(text="TEXT WATERMARK")
         photo_toggle = False
     else:
         photo_button.config(image=photo)
+        a_label.config(text="PHOTO WATERMARK")
         photo_toggle = True
 
 
@@ -61,6 +63,9 @@ text = text.subsample(text.width() // new_width, text.height() // new_height)
 photo_button = Button(root,image=photo, bd=0, command=toggle)
 photo_button.grid(column=0 , row=2, columnspan=2, pady=25, padx=25)
 
+#todo create text label showing what the suer has selected
+a_label = Label(text="Photo Watermarker")
+a_label.grid(column=0 , row=3, columnspan=2)
 
 
 
