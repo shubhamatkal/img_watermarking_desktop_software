@@ -14,7 +14,7 @@ BACKGROUND_COLOR = "#FFE5E5"
 root = Tk()
 root.title('IMAGE WATERMARKING SOFTWARE')
 root.config(padx=25, pady=25, bg=BACKGROUND_COLOR)
-root.geometry("850x700")
+root.geometry("810x700")
 
 #image file path
 img_file = ""
@@ -27,9 +27,7 @@ def select_file():
     print("...")
 
 
-# Create a Frame with a border to hold the Label
-# label_frame = Frame(root, relief="solid", borderwidth=2)
-# label_frame.pack(padx=10, pady=10)  # Add padding to control the border width
+
 #title
 title_label = Label( text = "IMAGE WATERMARKER", font=(FONT_NAME, 48, "bold"),
                      fg=TITLE_COLOUR, bg=BACKGROUND_COLOR)
