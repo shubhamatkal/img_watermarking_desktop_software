@@ -48,8 +48,14 @@ select_img_button.grid(column=0, row=1,columnspan=2,padx=25, pady=25)
 
 
 #defining toggle images
-photo = PhotoImage(file="/resources/PHOTO WATERMARK.png")
-text = PhotoImage(file="/python/good python projects/my_own_projects/img_watermarking_desktop_software/resources/TEXT WATERMARK.png")
+photo = PhotoImage(file="resources/PHOTO WATERMARK.png")
+text = PhotoImage(file="resources/TEXT WATERMARK.png")
+
+new_width = 100
+new_height = 40
+# Resize the image using the subsample method
+photo = photo.subsample(photo.width() // new_width, photo.height() // new_height)
+text = text.subsample(text.width() // new_width, text.height() // new_height)
 
 #create toggle button
 photo_button = Button(root,image=photo, bd=0, command=toggle)
