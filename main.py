@@ -67,6 +67,15 @@ photo_button.grid(column=0 , row=2, columnspan=2, pady=25, padx=25)
 a_label = Label(text="Photo Watermarker")
 a_label.grid(column=0 , row=3, columnspan=2)
 
+#todo create text label for choosing photo watermark image
+b_label = Label(text="choose the image using below button")
+b_label.grid(column=0 , row=4)
+
+#todo create text label for choosing text watermark image
+t_label = Label(text="type the text in below cell")
+t_label.grid(column=1 , row=4)
+
+
 
 
 
