@@ -51,15 +51,13 @@ def select_watermark():
     print("...")
 
 #todo create text watermark function
-def text_watermark1(img_input, img_output, text_watermark, xy_pos):
+def text_watermark1(img_input, text_watermark, xy_pos):
     image = Image.open(img_input)
-
     edit_image = ImageDraw.Draw(image)
     colour =  (135, 206, 235)
     font_watermark = ImageFont.truetype("arial.ttf", 200)
     edit_image.text(xy_pos, text_watermark, font=font_watermark, fill=colour)
-    image.show()
-    image.save(img_output)
+    # image.save(img_output)
 
 
 
@@ -67,9 +65,8 @@ def text_watermark():
     if img_file == "":
         messagebox.showerror("No image found , kindly select the image first")
     else:
-        img_output = f"watermarked.jpg"
         text_input_value = text_input.get()
-        text_watermark1(img_file, img_output,text_watermark=text_input_value, xy_pos=(100, 100) )
+        text_watermark1(img_file,text_watermark=text_input_value, xy_pos=(100, 100) )
         messagebox.showinfo("Complete", "Successfully watermarked!")
 
 # Upload logo - check if the file is a supported format
@@ -89,7 +86,6 @@ def watermark_logo():
         messagebox.showinfo(title="Error", message="Please upload a logo")
     else:
         im.paste(wm_logo)
-        im.show()
         messagebox.showinfo(title="Success", message="The image has a watermark logo on it now.")
 
 
