@@ -85,8 +85,13 @@ t_label.grid(column=1 , row=4)
 select_watermark_button = Button(root, text="watermark image", font=20, width=15, command=select_watermark)
 select_watermark_button.grid(column=0, row=5,padx=25, pady=25)
 
+#todo creating button to apply the watermark to the image
+apply_watermark_button = Button(root, text="apply watermark", font=20, width=15)
+apply_watermark_button.grid(column=0, row=6,padx=25, pady=25)
 
-
+#todo creating button to apply the watermark to the image
+apply_text_button = Button(root, text="apply text watermark", font=20, width=15)
+apply_text_button.grid(column=1, row=6,padx=25, pady=25)
 
 
 
