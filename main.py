@@ -93,6 +93,7 @@ def watermark_logo():
 def download():
     save_name = filedialog.asksaveasfile(filetypes=[('Images', '*.png')], defaultextension='*.png')
     im.save(save_name.name)
+    im.show()
 
 #title
 title_label = Label( text = "IMAGE WATERMARKER", font=(FONT_NAME, 48, "bold"),
