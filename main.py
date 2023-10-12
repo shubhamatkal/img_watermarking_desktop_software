@@ -97,5 +97,8 @@ apply_text_button.grid(column=1, row=6,padx=25, pady=25)
 text_input = Entry(root)
 text_input.grid(column=1, row=5)
 
+#todo creating a download image button
+apply_text_button = Button(root, text="Download Image", font=20, width=15)
+apply_text_button.grid(column=0, row=7,padx=25, pady=25, columnspan=2)
 
 root.mainloop()
