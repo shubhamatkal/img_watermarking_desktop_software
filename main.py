@@ -93,7 +93,9 @@ apply_watermark_button.grid(column=0, row=6,padx=25, pady=25)
 apply_text_button = Button(root, text="apply text watermark", font=20, width=15)
 apply_text_button.grid(column=1, row=6,padx=25, pady=25)
 
-
+#todo create a input cell to the hold of watermark text
+text_input = Entry(root)
+text_input.grid(column=1, row=5)
 
 
 root.mainloop()
