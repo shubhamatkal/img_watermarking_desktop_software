@@ -101,4 +101,8 @@ text_input.grid(column=1, row=5)
 apply_text_button = Button(root, text="Download Image", font=20, width=15)
 apply_text_button.grid(column=0, row=7,padx=25, pady=25, columnspan=2)
 
+#todo create text label to indicate the preview of image
+t_label = Label(text="PREVIEW OF IMAGE")
+t_label.grid(column=2, row=1)
+
 root.mainloop()
