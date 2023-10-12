@@ -59,8 +59,6 @@ def text_watermark1(img_input, text_watermark, xy_pos):
     edit_image.text(xy_pos, text_watermark, font=font_watermark, fill=colour)
     # image.save(img_output)
 
-
-
 def text_watermark():
     if im == "":
         messagebox.showerror("No image found , kindly select the image first")
@@ -69,14 +67,6 @@ def text_watermark():
         text_watermark1(im,text_watermark=text_input_value, xy_pos=(100, 100) )
         messagebox.showinfo("Complete", "Successfully watermarked!")
 
-# Upload logo - check if the file is a supported format
-# def upload_logo():
-#     global logo
-#     logo_name = askopenfilename()
-#     try:
-#         logo = Image.open(logo_name)
-#     except UnidentifiedImageError:
-#         messagebox.showinfo(title="Error", message="Unsupported file format.\n Please open an image file.")
 
 # Watermark image with logo
 def watermark_logo():
@@ -169,6 +159,12 @@ image = image.subsample(image.width() // new_width, image.height() // new_height
 # Create a label to display the image
 image_label = Label(root, image=image)
 image_label.grid(column=2, row=2, columnspan=1, rowspan=5)
+
+
+
+
+
+
 
 
 
