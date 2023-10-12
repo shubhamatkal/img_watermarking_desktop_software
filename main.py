@@ -1,6 +1,8 @@
 #initial imports
 from tkinter import *
+from tkinter import messagebox
 from tkinter.filedialog import askopenfilename
+from PIL import Image , ImageDraw , ImageFont
 
 #constants
 FONT_NAME = "Helvetica"
@@ -43,6 +45,31 @@ def select_watermark():
     watermark_file = askopenfilename()
     print(f"✓ User has selected the water mark image: {watermark_file}")
     print("...")
+
+#todo create text watermark function
+def text_watermark1(img_input, img_output, text_watermark, xy_pos):
+    image = Image.open(img_input)
+
+    edit_image = ImageDraw.Draw(image)
+    colour =  (135, 206, 235)
+    font_watermark = ImageFont.truetype("arial.ttf", 200)
+    edit_image.text(xy_pos, text_watermark, font=font_watermark, fill=colour)
+    image.show()
+    image.save(img_output)
+
+
+
+def text_watermark():
+    if img_file == "":
+        messagebox.showerror("No image found , kindly select the image first")
+    else:
+        img_output = f"watermarked.jpg"
+        text_input_value = text_input.get()
+        text_watermark1(img_file, img_output,text_watermark=text_input_value, xy_pos=(100, 100) )
+        messagebox.showinfo("Complete", "Successfully watermarked!")
+
+
+
 
 #title
 title_label = Label( text = "IMAGE WATERMARKER", font=(FONT_NAME, 48, "bold"),
@@ -90,7 +117,7 @@ apply_watermark_button = Button(root, text="apply watermark", font=20, width=15)
 apply_watermark_button.grid(column=0, row=6,padx=25, pady=25)
 
 #todo creating button to apply the watermark to the image
-apply_text_button = Button(root, text="apply text watermark", font=20, width=15)
+apply_text_button = Button(root, text="apply text watermark", font=20, width=15, command=text_watermark)
 apply_text_button.grid(column=1, row=6,padx=25, pady=25)
 
 #todo create a input cell to the hold of watermark text
@@ -118,6 +145,8 @@ image = image.subsample(image.width() // new_width, image.height() // new_height
 # Create a label to display the image
 image_label = Label(root, image=image)
 image_label.grid(column=2, row=2, columnspan=1, rowspan=5)
+
+
 
 
 
