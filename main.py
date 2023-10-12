@@ -2,7 +2,7 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter.filedialog import askopenfilename
-from PIL import Image , ImageDraw , ImageFont
+from PIL import Image , ImageDraw , ImageFont , UnidentifiedImageError
 
 #constants
 FONT_NAME = "Helvetica"
@@ -25,7 +25,9 @@ watermark_file = ""
 #writing some functions
 def select_file():
     global img_file
+    global im
     img_file = askopenfilename()
+    im = Image.open(img_file)
     print(f"✓ User has selected the file: {img_file}")
     print("...")
 
@@ -42,7 +44,9 @@ def toggle():
 
 def select_watermark():
     global watermark_file
+    global logo
     watermark_file = askopenfilename()
+    logo = Image.open(watermark_file)
     print(f"✓ User has selected the water mark image: {watermark_file}")
     print("...")
 
@@ -67,6 +71,26 @@ def text_watermark():
         text_input_value = text_input.get()
         text_watermark1(img_file, img_output,text_watermark=text_input_value, xy_pos=(100, 100) )
         messagebox.showinfo("Complete", "Successfully watermarked!")
+
+# Upload logo - check if the file is a supported format
+# def upload_logo():
+#     global logo
+#     logo_name = askopenfilename()
+#     try:
+#         logo = Image.open(logo_name)
+#     except UnidentifiedImageError:
+#         messagebox.showinfo(title="Error", message="Unsupported file format.\n Please open an image file.")
+
+# Watermark image with logo
+def watermark_logo():
+    try:
+        wm_logo = logo
+    except NameError:
+        messagebox.showinfo(title="Error", message="Please upload a logo")
+    else:
+        im.paste(wm_logo)
+        im.show()
+        messagebox.showinfo(title="Success", message="The image has a watermark logo on it now.")
 
 
 
@@ -113,7 +137,7 @@ select_watermark_button = Button(root, text="watermark image", font=20, width=15
 select_watermark_button.grid(column=0, row=5,padx=25, pady=25)
 
 #todo creating button to apply the watermark to the image
-apply_watermark_button = Button(root, text="apply watermark", font=20, width=15)
+apply_watermark_button = Button(root, text="apply watermark", font=20, width=15, command=watermark_logo)
 apply_watermark_button.grid(column=0, row=6,padx=25, pady=25)
 
 #todo creating button to apply the watermark to the image
