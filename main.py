@@ -1,6 +1,7 @@
 #initial imports
 from tkinter import *
 from tkinter import messagebox
+from tkinter import filedialog
 from tkinter.filedialog import askopenfilename
 from PIL import Image , ImageDraw , ImageFont , UnidentifiedImageError
 
@@ -52,8 +53,7 @@ def select_watermark():
 
 #todo create text watermark function
 def text_watermark1(img_input, text_watermark, xy_pos):
-    image = Image.open(img_input)
-    edit_image = ImageDraw.Draw(image)
+    edit_image = ImageDraw.Draw(im)
     colour =  (135, 206, 235)
     font_watermark = ImageFont.truetype("arial.ttf", 200)
     edit_image.text(xy_pos, text_watermark, font=font_watermark, fill=colour)
@@ -62,11 +62,11 @@ def text_watermark1(img_input, text_watermark, xy_pos):
 
 
 def text_watermark():
-    if img_file == "":
+    if im == "":
         messagebox.showerror("No image found , kindly select the image first")
     else:
         text_input_value = text_input.get()
-        text_watermark1(img_file,text_watermark=text_input_value, xy_pos=(100, 100) )
+        text_watermark1(im,text_watermark=text_input_value, xy_pos=(100, 100) )
         messagebox.showinfo("Complete", "Successfully watermarked!")
 
 # Upload logo - check if the file is a supported format
@@ -89,7 +89,10 @@ def watermark_logo():
         messagebox.showinfo(title="Success", message="The image has a watermark logo on it now.")
 
 
-
+#download function
+def download():
+    save_name = filedialog.asksaveasfile(filetypes=[('Images', '*.png')], defaultextension='*.png')
+    im.save(save_name.name)
 
 #title
 title_label = Label( text = "IMAGE WATERMARKER", font=(FONT_NAME, 48, "bold"),
@@ -145,7 +148,7 @@ text_input = Entry(root)
 text_input.grid(column=1, row=5)
 
 #todo creating a download image button
-apply_text_button = Button(root, text="Download Image", font=20, width=15)
+apply_text_button = Button(root, text="Download Image", font=20, width=15, command=download)
 apply_text_button.grid(column=0, row=7,padx=25, pady=25, columnspan=2)
 
 #todo create text label to indicate the preview of image
