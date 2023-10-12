@@ -105,4 +105,21 @@ apply_text_button.grid(column=0, row=7,padx=25, pady=25, columnspan=2)
 t_label = Label(text="PREVIEW OF IMAGE")
 t_label.grid(column=2, row=1)
 
+
+#todo image preview
+# Load an image using the PhotoImage class
+image = PhotoImage(file="resources/PHOTO WATERMARK.png")  # Replace "image.gif" with your image file path
+#set dimensions of image
+new_width = 220
+new_height = 220
+# Resize the image using the subsample method
+image = image.subsample(image.width() // new_width, image.height() // new_height)
+
+# Create a label to display the image
+image_label = Label(root, image=image)
+image_label.grid(column=2, row=2, columnspan=1, rowspan=5)
+
+
+
+
 root.mainloop()
